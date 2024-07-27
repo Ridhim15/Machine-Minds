@@ -1,0 +1,118 @@
+@import url('https://msr8.dev/style.css');
+@import url('https://fonts.googleapis.com/css?family=Inter:400,500,800|Comfortaa:400&display=swap');
+
+
+:root {
+    --dg-color:             rgba(0,255,255,   {{alpha}});
+    --mh-color:             rgba(255,100,130, {{alpha}});
+    --inactive-alpha:       0.1;
+    --active-alpha:         0.3;
+    --border-radius:        10px;
+    --border-radius-button: calc( var(--border-radius) / 2 );
+    --vertical-padding:     7px;
+    --main-font:           'Inter';
+    --slant:               -40deg;
+    /* --main-font:            'Comfortaa'; */
+}
+
+html {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+.attribute-input {
+    padding-bottom: var(--vertical-padding);
+}
+
+.dropdown-summary {
+    /* background-color: rgba(255,100,130, 0.1); */
+    font-size: 1.5em;
+    /* font-weight: 800; */
+    text-align: center;
+
+    padding-top:    7px;
+    padding-bottom: 7px;
+
+    transition: 1s;
+    /* transition-property: background-color; */
+}
+
+.dropdown-inner {
+    color: var(--fg-color);
+    padding: 10px 15px; /* vertical-padding horizontal-padding */
+}
+
+.mhd-inner-div {
+    padding-bottom: calc(var(--vertical-padding) * 2);
+    padding-top:    calc(var(--vertical-padding) * 2);
+
+}
+.mhd-subheading {
+    font-size: 1.2em;
+    font-weight: 800;
+    text-decoration: underline;
+    padding-bottom: var(--vertical-padding);
+}
+
+
+#buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-family: Comfortaa;
+    font-size: 1em;
+    font-weight: 800;
+    color: var(--fg-color);
+    background-color: rgb(30,30,30);
+    cursor: pointer;
+
+    transform: skewX( var(--slant) );
+    width: 48%; /* 49.3% */
+    text-align: center;
+
+    border-color: var(--fg-color);
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
+
+    transition: 1s ease-out;
+}
+
+button:hover {
+    background-color: black;
+}
+
+#dg-button-text {
+    transform: skewX( calc( -1 * var(--slant) ) );
+    display: inline-block; /* For some reason this is needed for un-slanting of text */
+}
+
+/* This for some reason causes weird selection squares in the first row when only the unclassified plot is generated */
+/* .plot-row {
+    display: flex;
+    justify-content: center;
+} */
+
+.plot {
+    width: 33%;
+}
+
+/* On mobile, change plots to 1 per line and reduce the width of buttons */
+@media only screen and (max-width: 768px) {
+    .plot  {width: 100%;}
+    button {width: 46%;}
+}
+
+
+
+
+/* Select all input tags with type=number */
+input[type=number] {
+    width: 11ch; /* or 7em */
+    text-align: center;
+}
+

@@ -1,0 +1,479 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="darkreader-lock">
+
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+
+    <script src="../static/script.js" defer></script>
+    <!-- <script src="{{ url_for('static', filename='script.js') }}" defer></script> -->
+    
+    <title>Algorithm Visualisation | msr8</title>
+</head>
+
+
+
+<body>
+    <!-- Warning: with a high number of points, some graphs may take a log time to render -->
+    <details id="data-generation">
+        <summary id="dgs" class="dropdown-summary" onclick="onclick_dgs()" onmouseover="onmouseover_dgs()" onmouseout="onmouseout_dgs()">Data Generation Hyperparameters</summary>
+        <div id="dgd" class="dropdown-inner">
+
+            <div id="dgd-cmap" class="attribute-input">
+                Color map: <span style="width:5px; display:inline-block;"></span>
+                <select id="dgd-cmap-input">
+                    <option value="Accent">Accent</option>
+                    <option value="Accent_r">Accent_r</option>
+                    <option value="Blues">Blues</option>
+                    <option value="Blues_r">Blues_r</option>
+                    <option value="BrBG">BrBG</option>
+                    <option value="BrBG_r">BrBG_r</option>
+                    <option value="BuGn">BuGn</option>
+                    <option value="BuGn_r">BuGn_r</option>
+                    <option value="BuPu">BuPu</option>
+                    <option value="BuPu_r">BuPu_r</option>
+                    <option value="CMRmap">CMRmap</option>
+                    <option value="CMRmap_r">CMRmap_r</option>
+                    <option value="Dark2">Dark2</option>
+                    <option value="Dark2_r">Dark2_r</option>
+                    <option value="GnBu">GnBu</option>
+                    <option value="GnBu_r">GnBu_r</option>
+                    <option value="Grays">Grays</option>
+                    <option value="Greens">Greens</option>
+                    <option value="Greens_r">Greens_r</option>
+                    <option value="Greys">Greys</option>
+                    <option value="Greys_r">Greys_r</option>
+                    <option value="OrRd">OrRd</option>
+                    <option value="OrRd_r">OrRd_r</option>
+                    <option value="Oranges">Oranges</option>
+                    <option value="Oranges_r">Oranges_r</option>
+                    <option value="PRGn">PRGn</option>
+                    <option value="PRGn_r">PRGn_r</option>
+                    <option value="Paired">Paired</option>
+                    <option value="Paired_r">Paired_r</option>
+                    <option value="Pastel1">Pastel1</option>
+                    <option value="Pastel1_r">Pastel1_r</option>
+                    <option value="Pastel2">Pastel2</option>
+                    <option value="Pastel2_r">Pastel2_r</option>
+                    <option value="PiYG">PiYG</option>
+                    <option value="PiYG_r">PiYG_r</option>
+                    <option value="PuBu">PuBu</option>
+                    <option value="PuBuGn">PuBuGn</option>
+                    <option value="PuBuGn_r">PuBuGn_r</option>
+                    <option value="PuBu_r">PuBu_r</option>
+                    <option value="PuOr">PuOr</option>
+                    <option value="PuOr_r">PuOr_r</option>
+                    <option value="PuRd">PuRd</option>
+                    <option value="PuRd_r">PuRd_r</option>
+                    <option value="Purples">Purples</option>
+                    <option value="Purples_r">Purples_r</option>
+                    <option value="RdBu">RdBu</option>
+                    <option value="RdBu_r">RdBu_r</option>
+                    <option value="RdGy">RdGy</option>
+                    <option value="RdGy_r">RdGy_r</option>
+                    <option value="RdPu">RdPu</option>
+                    <option value="RdPu_r">RdPu_r</option>
+                    <option value="RdYlBu">RdYlBu</option>
+                    <option value="RdYlBu_r">RdYlBu_r</option>
+                    <option value="RdYlGn">RdYlGn</option>
+                    <option value="RdYlGn_r">RdYlGn_r</option>
+                    <option value="Reds">Reds</option>
+                    <option value="Reds_r">Reds_r</option>
+                    <option value="Set1">Set1</option>
+                    <option value="Set1_r">Set1_r</option>
+                    <option value="Set2">Set2</option>
+                    <option value="Set2_r">Set2_r</option>
+                    <option value="Set3">Set3</option>
+                    <option value="Set3_r">Set3_r</option>
+                    <option value="Spectral">Spectral</option>
+                    <option value="Spectral_r">Spectral_r</option>
+                    <option value="Wistia">Wistia</option>
+                    <option value="Wistia_r">Wistia_r</option>
+                    <option value="YlGn">YlGn</option>
+                    <option value="YlGnBu">YlGnBu</option>
+                    <option value="YlGnBu_r">YlGnBu_r</option>
+                    <option value="YlGn_r">YlGn_r</option>
+                    <option value="YlOrBr">YlOrBr</option>
+                    <option value="YlOrBr_r">YlOrBr_r</option>
+                    <option value="YlOrRd">YlOrRd</option>
+                    <option value="YlOrRd_r">YlOrRd_r</option>
+                    <option value="afmhot">afmhot</option>
+                    <option value="afmhot_r">afmhot_r</option>
+                    <option value="autumn">autumn</option>
+                    <option value="autumn_r">autumn_r</option>
+                    <option value="binary">binary</option>
+                    <option value="binary_r">binary_r</option>
+                    <option value="bone">bone</option>
+                    <option value="bone_r">bone_r</option>
+                    <option value="brg">brg</option>
+                    <option value="brg_r">brg_r</option>
+                    <option value="bwr">bwr</option>
+                    <option value="bwr_r">bwr_r</option>
+                    <option value="cividis">cividis</option>
+                    <option value="cividis_r">cividis_r</option>
+                    <option value="cool">cool</option>
+                    <option value="cool_r">cool_r</option>
+                    <option value="coolwarm">coolwarm</option>
+                    <option value="coolwarm_r">coolwarm_r</option>
+                    <option value="copper">copper</option>
+                    <option value="copper_r">copper_r</option>
+                    <option value="cubehelix">cubehelix</option>
+                    <option value="cubehelix_r">cubehelix_r</option>
+                    <option value="flag">flag</option>
+                    <option value="flag_r">flag_r</option>
+                    <option value="gist_earth">gist_earth</option>
+                    <option value="gist_earth_r">gist_earth_r</option>
+                    <option value="gist_gray">gist_gray</option>
+                    <option value="gist_gray_r">gist_gray_r</option>
+                    <option value="gist_grey">gist_grey</option>
+                    <option value="gist_heat">gist_heat</option>
+                    <option value="gist_heat_r">gist_heat_r</option>
+                    <option value="gist_ncar">gist_ncar</option>
+                    <option value="gist_ncar_r">gist_ncar_r</option>
+                    <option value="gist_rainbow">gist_rainbow</option>
+                    <option value="gist_rainbow_r">gist_rainbow_r</option>
+                    <option value="gist_stern">gist_stern</option>
+                    <option value="gist_stern_r">gist_stern_r</option>
+                    <option value="gist_yarg">gist_yarg</option>
+                    <option value="gist_yarg_r">gist_yarg_r</option>
+                    <option value="gnuplot">gnuplot</option>
+                    <option value="gnuplot2">gnuplot2</option>
+                    <option value="gnuplot2_r">gnuplot2_r</option>
+                    <option value="gnuplot_r">gnuplot_r</option>
+                    <option value="gray">gray</option>
+                    <option value="gray_r">gray_r</option>
+                    <option value="grey">grey</option>
+                    <option value="hot">hot</option>
+                    <option value="hot_r">hot_r</option>
+                    <option value="hsv">hsv</option>
+                    <option value="hsv_r">hsv_r</option>
+                    <option value="inferno">inferno</option>
+                    <option value="inferno_r">inferno_r</option>
+                    <option value="jet">jet</option>
+                    <option value="jet_r">jet_r</option>
+                    <option value="magma">magma</option>
+                    <option value="magma_r">magma_r</option>
+                    <option value="nipy_spectral">nipy_spectral</option>
+                    <option value="nipy_spectral_r">nipy_spectral_r</option>
+                    <option value="ocean">ocean</option>
+                    <option value="ocean_r">ocean_r</option>
+                    <option value="pink">pink</option>
+                    <option value="pink_r">pink_r</option>
+                    <option value="plasma">plasma</option>
+                    <option value="plasma_r">plasma_r</option>
+                    <option value="prism">prism</option>
+                    <option value="prism_r">prism_r</option>
+                    <option value="rainbow">rainbow</option>
+                    <option value="rainbow_r">rainbow_r</option>
+                    <option value="seismic">seismic</option>
+                    <option value="seismic_r">seismic_r</option>
+                    <option value="spring">spring</option>
+                    <option value="spring_r">spring_r</option>
+                    <option value="summer">summer</option>
+                    <option value="summer_r">summer_r</option>
+                    <option value="tab10">tab10</option>
+                    <option value="tab10_r">tab10_r</option>
+                    <option value="tab20">tab20</option>
+                    <option value="tab20_r">tab20_r</option>
+                    <option value="tab20b">tab20b</option>
+                    <option value="tab20b_r">tab20b_r</option>
+                    <option value="tab20c">tab20c</option>
+                    <option value="tab20c_r">tab20c_r</option>
+                    <option value="terrain">terrain</option>
+                    <option value="terrain_r">terrain_r</option>
+                    <option value="turbo">turbo</option>
+                    <option value="turbo_r">turbo_r</option>
+                    <option value="twilight">twilight</option>
+                    <option value="twilight_r">twilight_r</option>
+                    <option value="twilight_shifted">twilight_shifted</option>
+                    <option value="twilight_shifted_r">twilight_shifted_r</option>
+                    <option value="viridis">viridis</option>
+                    <option value="viridis_r">viridis_r</option>
+                    <option value="winter">winter</option>
+                    <option value="winter_r">winter_r</option>
+                </select>
+            </div>
+            
+            <div id="dgd-n-samples" class="attribute-input">
+                Number of Samples: <span style="width:5px; display:inline-block;"></span>
+                1 <= <input id="dgd-n-samples-input" type="number" class="number-input"> <= 10,000
+            </div>
+            
+            <div id="dgd-template" class="attribute-input">
+                Type: <span style="width:5px; display:inline-block;"></span>
+                <select id="dgd-template-input" onchange="onchange_dgd_template()">
+                    <option value="make_classification">Random Clusters</option>
+                    <option value="make_moons">Moons</option>
+                    <option value="make_circles">Circles</option>
+                </select>
+            </div>
+
+            <div id="dgd-noise" class="attribute-input">
+                Noise: <span style="width:5px; display:inline-block;"></span>
+                0 <= <input id="dgd-noise-input" type="number" step="0.01" class="number-input"> <= 1
+            </div>
+
+            <div id="dgd-factor" class="attribute-input">
+                Factor: <span style="width:5px; display:inline-block;"></span>
+                0 <= <input id="dgd-factor-input" type="number" step="0.01" class="number-input"> <= 0.999
+            </div>
+
+            <div id="dgd-class-sep" class="attribute-input">
+                Class seperation: <span style="width:5px; display:inline-block;"></span>
+                0.1 <= <input id="dgd-class-sep-input" step="0.01" type="number" class="number-input"> <= 5
+            </div>
+
+            <div id="dgd-n-classes" class="attribute-input">
+                Number of classes: <span style="width:5px; display:inline-block;"></span>
+                <select id="dgd-n-classes-input">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        
+        </div>
+    </details>
+
+
+
+    <br>
+
+
+
+    <details>
+        <summary id="mhs" class="dropdown-summary" onclick="onclick_mhs()" onmouseover="onmouseover_mhs()" onmouseout="onmouseout_mhs()">Models' Hyperparameters</summary>    
+        <div id="mhd" class="dropdown-inner">
+            
+
+            <div id="mhd-knn" class="mhd-inner-div">
+                <div class="mhd-subheading">KNN (K Nearest Neighbours)</div>
+                
+                <div id="mhd-knn-k" class="attribute-input">
+                    Number of Neighbors (k): <span style="width:5px; display:inline-block;"></span>
+                    1 <= <input id="mhd-knn-k-input" type="number" class="number-input"> <= <span id="knn-n-smaples">number of samples</span>
+                </div>
+
+                <div id="mhd-knn-distance-metric" class="attribute-input">
+                    Distance metric: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-knn-distance-metric-input">
+                        <option value="chebyshev"  >Chebyshev</option>
+                        <option value="cosine"     >Cosine</option>
+                        <option value="euclidean"  >Euclidean (L2)</option>
+                        <option value="haversine"  >Haversine</option>
+                        <option value="manhattan"  >Manhattan (City Block/L1)</option>
+                        <option value="minkowski"  >Minkowski</option>
+                        <option value="sqeuclidean">Sqaured Euclidean</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div id="mhd-svm" class="mhd-inner-div">
+                <div class="mhd-subheading">SVM (Support Vector Machine)</div>
+                
+                <div id="mhd-svm-kernel" class="attribute-input">
+                    Kernel: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-svm-kernel-input" onchange="onchange_mhd_svm_kernel()">
+                        <option value="linear"  >Linear</option>
+                        <option value="poly"    >Polynomial</option>
+                        <option value="rbf"     >Radial Basis Function (RBF)</option>
+                        <option value="sigmoid" >Sigmoid</option>
+                    </select>
+                </div>
+
+                <div id="mhd-svm-c" class="attribute-input">
+                    Regularization parameter (C): <span style="width:5px; display:inline-block;"></span>
+                    0.01 <= <input id="mhd-svm-c-input" type="number" step="0.01" class="number-input"> <= 10
+                </div>
+                
+                <div id="mhd-svm-gamma" class="attribute-input">
+                    Kernel coefficient (gamma): <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-svm-gamma-input" onchange="onchange_mhd_svm_gamma()">
+                        <option value="scale">Scale</option>
+                        <option value="auto" >Auto</option>
+                        <option value="float">Float</option>
+                    </select>
+                    <span style="width:5px; display:inline-block;"></span>
+                    <div id="mhd-svm-gamma-float" class="attribute-input" style="display: inline;">
+                        0.01 <= <input id="mhd-svm-gamma-float-input" step="0.01" type="number" class="number-input"> <= 10
+                    </div>
+                </div>
+
+                <div id="mhd-svm-degree" class="attribute-input">
+                    Degree: <span style="width:5px; display:inline-block;"></span>
+                    1 <= <input id="mhd-svm-degree-input" type="number" class="number-input"> <= 10
+                </div>
+            </div>
+
+
+            <div id="mhd-lr" class="mhd-inner-div">
+                <div class="mhd-subheading">Logistic Regression</div>
+                
+                <div id="mhd-lr-penalty" class="attribute-input">
+                    Penalty: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-lr-penalty-input" onchange="onchange_mhd_lr_penalty()">
+                        <option value="l1"         >L1</option>
+                        <option value="l2"         >L2</option>
+                        <option value="elasticnet" >Elastic Net</option>
+                        <option value="none"       >None</option>
+                    </select>
+                </div>
+
+                <div id="mhd-lr-c" class="attribute-input">
+                    Regularization parameter (C): <span style="width:5px; display:inline-block;"></span>
+                    0.01 <= <input id="mhd-lr-c-input" type="number" step="0.01" class="number-input"> <= 10
+                </div>
+
+                <div id="mhd-lr-l1-ratio" class="attribute-input">
+                    L1 ratio: <span style="width:5px; display:inline-block;"></span>
+                    0 <= <input id="mhd-lr-l1-ratio-input" type="number" step="0.01" class="number-input"> <= 1
+                </div>
+            </div>
+            
+
+            <div id="mhd-dt" class="mhd-inner-div">
+                <div class="mhd-subheading">Desicion Tree</div>
+                
+                <div id="mhd-dt-criterion" class="attribute-input">
+                    Criterion: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-dt-criterion-input">
+                        <option value="entropy"  >Entropy</option>
+                        <option value="gini"     >Gini</option>
+                        <option value="log_loss" >Log Loss</option>
+                    </select>
+                </div>
+
+                <div id="mhd-dt-splitter" class="attribute-input">
+                    Splitter: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-dt-splitter-input">
+                        <option value="best"   >Best</option>
+                        <option value="random" >Random</option>
+                    </select>
+                </div>
+
+                <div id="mhd-dt-max-depth" class="attribute-input">
+                    Max Depth: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-dt-max-depth-input" onchange="onchange_mhd_dt_max_depth()">
+                        <option value="none">Until all leaves are pure</option>
+                        <option value="integer">Integer</option>
+                    </select>
+                    <span style="width:5px; display:inline-block;"></span>
+                    <div id="mhd-dt-max-depth-int" class="attribute-input" style="display: inline;">
+                        1 <= <input id="mhd-dt-max-depth-int-input" type="number" class="number-input"> <= 100
+                    </div>
+                </div>
+
+                <div id="mhd-dt-max-features" class="attribute-input">
+                    Max Features: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-dt-max-features-input" onchange="onchange_mhd_dt_max_features()">
+                        <option value="none">    All</option>
+                        <option value="sqrt">    Square root of the number of features</option>
+                        <option value="log2">    Log base 2 of the number of features</option>
+                        <option value="integer"> Integer</option>
+                        <option value="float">   Float</option>
+                    </select>
+                    <span style="width:5px; display:inline-block;"></span>
+                    <div id="mhd-dt-max-features-int" class="attribute-input" style="display: inline;">
+                        1 <= <input id="mhd-dt-max-features-int-input" type="number" class="number-input"> <= 100
+                    </div>
+                    <div id="mhd-dt-max-features-float" class="attribute-input" style="display: inline;">
+                        0.01 <= <input id="mhd-dt-max-features-float-input" step="0.01" type="number" class="number-input"> <= 1
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="mhd-ensemble" class="mhd-inner-div">
+                <div class="mhd-subheading">Ensemble</div>
+
+                <div id="mhd-ensemble-n-estimators" class="attribute-input">
+                    Number of Estimators: <span style="width:5px; display:inline-block;"></span>
+                    1 <= <input id="mhd-ensemble-n-estimators-input" type="number" class="number-input"> <= 1,000
+                </div>
+
+                <div id="mhd-ensemble-criterion" class="attribute-input">
+                    Criterion: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-ensemble-criterion-input">
+                        <option value="entropy"  >Entropy</option>
+                        <option value="gini"     >Gini</option>
+                        <option value="log_loss" >Log Loss</option>
+                    </select>
+                </div>
+
+                <div id="mhd-ensemble-max-depth" class="attribute-input">
+                    Max Depth: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-ensemble-max-depth-input" onchange="onchange_mhd_ensemble_max_depth()">
+                        <option value="none">Until all leaves are pure</option>
+                        <option value="integer">Integer</option>
+                    </select>
+                    <span style="width:5px; display:inline-block;"></span>
+                    <div id="mhd-ensemble-max-depth-int" class="attribute-input" style="display: inline;">
+                        1 <= <input id="mhd-ensemble-max-depth-int-input" type="number" class="number-input"> <= 100
+                    </div>
+                </div>
+
+                <div id="mhd-ensemble-max-features">
+                    Max Features: <span style="width:5px; display:inline-block;"></span>
+                    <select id="mhd-ensemble-max-features-input" onchange="onchange_mhd_ensemble_max_features()">
+                        <option value="none">    All</option>
+                        <option value="sqrt">    Square root of the number of features</option>
+                        <option value="log2">    Log base 2 of the number of features</option>
+                        <option value="integer"> Integer</option>
+                        <option value="float">   Float</option>
+                    </select>
+                    <span style="width:5px; display:inline-block;"></span>
+                    <div id="mhd-ensemble-max-features-int" class="attribute-input" style="display: inline;">
+                        1 <= <input id="mhd-ensemble-max-features-int-input" type="number" class="number-input"> <= 100
+                    </div>
+                    <div id="mhd-ensemble-max-features-float" class="attribute-input" style="display: inline;">
+                        0 <= <input id="mhd-ensemble-max-features-float-input" step="0.01" type="number" class="number-input"> <= 1
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+
+
+    </details>
+
+
+
+    <br>
+
+
+
+    <div id="buttons">
+        <button class="button" id="dg-button" onclick="onclick_generate_data()" ><span id="dg-button-text"> Generate Data  </span></button>
+        <button class="button" id="mh-button" onclick="onclick_generate_plots()"><span id="dg-button-text"> Generate Plots </span></button>
+    </div>
+
+
+
+    <br>
+
+
+
+    <div id="plots">
+        <div id="plot-row-1" class="plot-row">
+            <img id="plot-unclassified" class="plot">
+            <img id="plot-knn"          class="plot">
+            <img id="plot-svm"          class="plot">
+        </div>
+        <div id="plot-row-2" class="plot-row">
+            <img id="plot-lr" class="plot">
+            <img id="plot-dt" class="plot">
+            <img id="plot-rf" class="plot"> <!-- random forest -->
+        </div>
+        <div id="plot-row-3" class="plot-row">
+            <img id="plot-et" class="plot"> <!-- extra trees -->
+        </div>
+    </div>
+</body>
+
+
+</html>
